@@ -5,15 +5,15 @@
 使用 Tailwind CSS 开发项目，Django 风味。
 
 
-## Quick Start
+## 快速开始
 
-### 1. 从 pip 安装 `django-tailwindcss`
+### 1. 从 pip 安装 django-tailwindcss
 
 ```
 pip install django-tailwindcss
 ```
 
-### 2. 下载 Tailwind CSS CLI 文件并创建 `tailwind.config.js`：
+### 2. 下载 Tailwind CSS CLI 文件并创建 tailwind.config.js
 
 CLI 文件下载地址 [https://github.com/tailwindlabs/tailwindcss/releases](https://github.com/tailwindlabs/tailwindcss/releases)
 
@@ -44,7 +44,7 @@ proj
 └── tailwind.config.js
 ```
 
-### 3. 添加 `tailwindcss` 到你的 settings.INSTALLED_APPS：
+### 3. 添加 tailwindcss 到你的 settings.INSTALLED_APPS
 
 ```python
 INSTALLED_APPS = [
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-### 4. 在你的 settings 中添加这些变量:
+### 4. 在你的 settings 中添加这些变量
 
 ```python
 # BASE_DIR = Path(__file__).resolve().parent
@@ -63,7 +63,7 @@ TAILWINDCSS_CLI_FILE = BASE_DIR / 'tailwindcss-linux-x64'
 TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
 ```
 
-### 5. 在你的基础模板中添加 `tailwindcss` 标签：
+### 5. 在你的基础模板中添加 tailwindcss 标签
 
 ```html
 {% load tailwindcss %}
@@ -82,7 +82,7 @@ TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
 
 `django-tailwindcss` 在 Django 每次启动 **和** 文件发生变化时生成 CSS。
 
-`{% tailwindcss %}` 的输出总是:
+`{% tailwindcss %}` 的输出总是如:
 
 ```html
 <style>/*! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com*/*,:after,:before{border:0 solid #e5e7eb;box-sizing:border-box}...</style>

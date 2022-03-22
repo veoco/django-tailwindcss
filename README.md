@@ -6,13 +6,13 @@ Develop with Tailwind CSS in Django flavour.
 
 ## Quick Start
 
-### 1. Install `django-tailwindcss` from pip
+### 1. Install django-tailwindcss from pip
 
 ```
 pip install django-tailwindcss
 ```
 
-### 2. Download Tailwind CSS CLI file and create `tailwind.config.js`:
+### 2. Download Tailwind CSS CLI file and create tailwind.config.js
 
 CLI file can be download from [https://github.com/tailwindlabs/tailwindcss/releases](https://github.com/tailwindlabs/tailwindcss/releases)
 
@@ -43,7 +43,7 @@ proj
 └── tailwind.config.js
 ```
 
-### 3. Add `tailwindcss` to your settings.INSTALLED_APPS:
+### 3. Add tailwindcss to your settings.INSTALLED_APPS
 
 ```python
 INSTALLED_APPS = [
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-### 4. Create these variables in your settings:
+### 4. Create these variables in your settings
 
 ```python
 # BASE_DIR = Path(__file__).resolve().parent
@@ -62,7 +62,7 @@ TAILWINDCSS_CLI_FILE = BASE_DIR / 'tailwindcss-linux-x64'
 TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
 ```
 
-### 5. Use `tailwindcss` tag in your base template:
+### 5. Use tailwindcss tag in your base template
 
 ```html
 {% load tailwindcss %}

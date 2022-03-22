@@ -27,8 +27,8 @@ jobs:
         pip install django
     - name: Install TailwindCSS CLI
       run: |
-        wget https://github.com/tailwindlabs/tailwindcss/releases/download/v3.0.23/tailwindcss-linux-x64 -O tesets/tailwindcss-linux-x64
-        chmod +x tesets/tailwindcss-linux-x64
+        wget https://github.com/tailwindlabs/tailwindcss/releases/download/v3.0.23/tailwindcss-linux-x64 -O tests/tailwindcss-linux-x64
+        chmod +x tests/tailwindcss-linux-x64
     - name: Run Tests
       run: |
         python run_tests.py

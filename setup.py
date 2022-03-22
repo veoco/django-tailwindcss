@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="django-tailwindcss",
-    version="0.1.0",
+    version="0.2.0",
     author="Veoco",
     author_email="one@nomox.cn",
     description="Develop with Tailwind CSS in Django flavour.",

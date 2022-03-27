@@ -1,6 +1,9 @@
 English | [中文](README_zh.md)
 
 # django-tailwindcss
+
+[![Django CI](https://github.com/veoco/django-tailwindcss/actions/workflows/django.yml/badge.svg)](https://github.com/veoco/django-tailwindcss/actions/workflows/django.yml)
+
 Develop with Tailwind CSS in Django flavour.
 
 

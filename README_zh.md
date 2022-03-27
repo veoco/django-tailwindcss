@@ -2,6 +2,8 @@
 
 # django-tailwindcss
 
+[![Django CI](https://github.com/veoco/django-tailwindcss/actions/workflows/django.yml/badge.svg)](https://github.com/veoco/django-tailwindcss/actions/workflows/django.yml)
+
 使用 Tailwind CSS 开发项目，Django 风味。
 
 

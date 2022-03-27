@@ -9,4 +9,4 @@ class TailwindcssConfig(AppConfig):
     name = 'tailwindcss'
 
     def ready(self):
-        file_changed.connect(signals.refresh_tailwindcss)
+        file_changed.connect(signals.refresh_tailwindcss, dispatch_uid='tailwindcss_file_changed')

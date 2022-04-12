@@ -4,16 +4,23 @@ import subprocess
 from django import template
 from django.conf import settings
 from django.utils.html import format_html
+from django.core.cache import cache
 
 
 class TailwindCSS:
     def __init__(self):
-        self.css = None
         self._css_rule = re.compile(r"/.*}")
         self._cli_file = settings.TAILWINDCSS_CLI_FILE
         self._config_file = settings.TAILWINDCSS_CONFIG_FILE
 
-        self.refresh()
+    @property
+    def css(self):
+        tailwindcss = cache.get('tailwindcss')
+        if tailwindcss:
+            return tailwindcss
+        else:
+            self.refresh()
+            return cache.get('tailwindcss')
 
     def refresh(self):
         task = subprocess.run(
@@ -22,7 +29,8 @@ class TailwindCSS:
             text=True,
             check=True,
         )
-        self.css = self._css_rule.search(task.stdout).group()
+        tailwindcss = self._css_rule.search(task.stdout).group()
+        cache.set('tailwindcss', tailwindcss, timeout=None)
 
 
 tailwind = TailwindCSS()

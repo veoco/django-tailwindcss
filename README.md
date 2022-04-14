@@ -79,6 +79,17 @@ TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
 </html>
 ```
 
+## Cache
+
+`django-tailwindcss` CSS generation step is deferred until the first visit to a page that uses the `tailwindcss` tag. The generated CSS is stored in the cache to speed up page loading and prevent blocking the Django process, and for modified and reloaded CSS there is still a waiting period before it takes effect automatically.
+
+This works well with the default `LocMemCache` caching backend, but when using the `DummyCache` backend it degrades to a pre-0.3.0 state, as this backend has no cache at all.
+
+Note that when using the `Memcached`, `Redis`, `DatabaseCache`, `FileBasedCache` caching backends, the cache is not automatically cleared as the `LocMemCache` backend is when the process is restarted, so this may result in out-of-date CSS being used after updating a file, for which the `refreshtailwindcss` management command has been added to facilitate manual refreshing of the cache.
+
+```
+python manage.py refreshtailwindcss 
+```
 
 ## Internal
 

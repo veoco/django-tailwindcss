@@ -79,6 +79,18 @@ TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
 </html>
 ```
 
+## 缓存
+
+`django-tailwindcss` 生成 CSS 的步骤被推迟，直到首次访问使用了 `tailwindcss` 标签的页面。生成的 CSS 被保存在缓存中，以加快页面的加载，防止阻塞 Django 进程，对于修改后重新加载的 CSS 仍然需要等待一段时间才会自动生效。
+
+这在使用默认的 `LocMemCache` 缓存后端时配合的很好，但当使用 `DummyCache` 后端会退化到 0.3.0 之前版本的状态，因为此后端根本就没有缓存。
+
+需要注意使用 `Memcached`、`Redis`、`DatabaseCache`、`FileBasedCache` 缓存后端时，缓存不会像 `LocMemCache` 后端因为进程重启而自动清空，因此可能导致在更新文件后使用过时的 CSS，为此新增了 `refreshtailwindcss` 管理命令，便于手动刷新缓存：
+
+```
+python manage.py refreshtailwindcss 
+```
+
 
 ## 内部
 

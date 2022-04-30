@@ -3,7 +3,7 @@ import subprocess
 
 from django import template
 from django.conf import settings
-from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django.core.cache import cache
 
 
@@ -40,5 +40,5 @@ register = template.Library()
 
 @register.simple_tag
 def tailwindcss():
-    css = format_html("<style>{}</style>", tailwind.css)
+    css = mark_safe("<style>{}</style>".format(tailwind.css))
     return css

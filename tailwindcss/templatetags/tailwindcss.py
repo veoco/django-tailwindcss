@@ -17,11 +17,11 @@ class TailwindCSS:
     
     def get_css(self, template_path='', bare=False):
         if template_path:
-            cache_key = '/'.join(('tailwindcss', template_path))
             path = self._base_dir / template_path
+            cache_key = 'tw/' + str(path)
         else:
-            cache_key = 'tailwindcss'
             path = ''
+            cache_key = 'tailwindcss'
 
         tailwindcss = cache.get(cache_key)
         if not tailwindcss:

@@ -11,7 +11,6 @@ class ClientTestCase(SimpleTestCase):
 
         text = response.content.decode('utf-8')
         self.assertIn('style', text, 'style tag not in response')
-        self.assertNotIn('bg-gray-100', text, 'bg-gray-100 in default css')
 
     def test_bg_gray(self):
         response = self.client.get('/bg-gray/')
@@ -29,3 +28,11 @@ class ClientTestCase(SimpleTestCase):
         bg_gray_raw_text = bg_gray_raw_response.content.decode('utf-8')
         
         self.assertEqual(bg_gray_text, bg_gray_raw_text)
+
+    def test_tpl_bg_slate(self):
+        response = self.client.get('/tpl-bg-slate/')
+        self.assertEqual(response.status_code, 200, 'test project error')
+
+        text = response.content.decode('utf-8')
+        self.assertIn('bg-slate-100', text, 'bg-slate-100 not in purge_tag css')
+        self.assertNotIn('bg-gray-100', text, 'bg-gray-100 in purge_tag css')

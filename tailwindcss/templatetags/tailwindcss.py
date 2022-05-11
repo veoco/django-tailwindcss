@@ -39,6 +39,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def tailwindcss():
-    css = mark_safe("<style>{}</style>".format(tailwind.css))
-    return css
+def tailwindcss(raw=False):
+    if raw:
+        return mark_safe(tailwind.css)
+    return mark_safe("<style>{}</style>".format(tailwind.css))

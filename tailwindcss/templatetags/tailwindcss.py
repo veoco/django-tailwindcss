@@ -30,7 +30,7 @@ class TailwindCSS:
 
         if bare:
             return self._bare_css_rule.search(tailwindcss).group(1)
-        return tailwind
+        return tailwindcss
 
     def refresh(self, path=''):
         if path:

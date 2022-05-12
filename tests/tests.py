@@ -11,7 +11,6 @@ class ClientTestCase(SimpleTestCase):
 
         text = response.content.decode('utf-8')
         self.assertIn('style', text, 'style tag not in response')
-        self.assertNotIn('bg-gray-100', text, 'bg-gray-100 in default css')
 
     def test_bg_gray(self):
         response = self.client.get('/bg-gray/')

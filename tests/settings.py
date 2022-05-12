@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = 'fake-key'
 
 INSTALLED_APPS = [
+    'django.contrib.staticfiles',
     "tests",
     "tailwindcss",
 ]
@@ -19,6 +20,12 @@ TEMPLATES = [
     }
 ]
 
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / 'static'
+
 TAILWINDCSS_CLI_FILE = BASE_DIR / 'tailwindcss-linux-x64'
 
 TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
+
+TAILWINDCSS_OUTPUT_FILE = 'style.css'

@@ -17,10 +17,7 @@ class TailwindCSS:
         self._config_file = settings.TAILWINDCSS_CONFIG_FILE
         self._output_file = Path(settings.STATIC_ROOT) / settings.TAILWINDCSS_OUTPUT_FILE
 
-        self.css_url = ''
-
-        if self._output_file.is_file():
-            self.css_url = static(self._output_file)
+        self._is_output_file = self._output_file.is_file()
 
     @property
     def css(self):
@@ -30,6 +27,12 @@ class TailwindCSS:
         else:
             self.refresh()
             return cache.get('tailwindcss')
+    
+    @property
+    def css_url(self):
+        if self._is_output_file:
+            return static(self._output_file)
+        return ''
 
     def refresh(self):
         task = subprocess.run(

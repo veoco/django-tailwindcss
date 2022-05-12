@@ -31,7 +31,7 @@ class TailwindCSS:
     
     @property
     def css_url(self):
-        if self._is_output_file:
+        if self._is_output_filepath:
             return static(self._output_file)
         return ''
 

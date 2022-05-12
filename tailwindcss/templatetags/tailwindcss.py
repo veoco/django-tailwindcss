@@ -15,7 +15,7 @@ class TailwindCSS:
         self._css_rule = re.compile(r"/.*}")
         self._cli_file = settings.TAILWINDCSS_CLI_FILE
         self._config_file = settings.TAILWINDCSS_CONFIG_FILE
-        self._output_file = Path(settings.TAILWINDCSS_OUTPUT_FILE)
+        self._output_file = Path(settings.STATIC_ROOT) / settings.TAILWINDCSS_OUTPUT_FILE
 
         self.css_url = ''
 

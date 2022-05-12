@@ -1,4 +1,5 @@
 from io import StringIO
+from pathlib import Path
 
 from django.conf import settings
 from django.core.management import call_command
@@ -16,7 +17,7 @@ class TailwindCSSTestCase(SimpleTestCase):
         out = StringIO()
         call_command('generatetailwindcss', stdout=out)
 
-        filepath = settings.STATIC_ROOT / settings.TAILWINDCSS_OUTPUT_FILE
+        filepath = Path(settings.STATIC_ROOT) / settings.TAILWINDCSS_OUTPUT_FILE
         self.assertTrue(filepath.is_file(), 'File not generate')
 
         self.assertIn('Successfully generated tailwindcss file', out.getvalue(), 'Generate file command error')

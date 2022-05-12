@@ -31,5 +31,4 @@ jobs:
         chmod +x tests/tailwindcss-linux-x64
     - name: Run Tests
       run: |
-        cd tests
-        python ../run_tests.py
+        python run_tests.py

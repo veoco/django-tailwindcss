@@ -13,9 +13,9 @@ class TailwindCSSTestCase(SimpleTestCase):
         css_text = tailwind.css
         self.assertIsNotNone(css_text)
     
-    def test_generate_file(self):
+    def test_make_tailwindcss_file(self):
         out = StringIO()
-        call_command('generatetailwindcss', stdout=out)
+        call_command('maketailwindcss', stdout=out)
 
         filepath = Path(settings.STATIC_ROOT) / settings.TAILWINDCSS_OUTPUT_FILE
         self.assertTrue(filepath.is_file(), 'File not generate')

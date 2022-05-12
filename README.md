@@ -63,6 +63,9 @@ INSTALLED_APPS = [
 
 TAILWINDCSS_CLI_FILE = BASE_DIR / 'tailwindcss-linux-x64'
 TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
+
+# For file mode
+TAILWINDCSS_OUTPUT_FILE = 'style.css'
 ```
 
 ### 5. Use tailwindcss tag in your base template
@@ -78,6 +81,16 @@ TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
   ...
 </html>
 ```
+
+### 6. (Optional) Generate tailwindcss file
+
+Use `maketailwindcss` command to generate tailwindcss file in `Path(settings.STATIC_ROOT) / settings.TAILWINDCSS_OUTPUT_FILE`.
+
+```
+python manage.py maketailwindcss
+```
+
+`{% tailwindcss %}` output will be changed to use exist file.
 
 ## Cache
 
@@ -102,3 +115,15 @@ And `{% tailwindcss %}` outputs are same as:
 ```
 
 So you usually only need to add it once.
+
+If you add `raw` argument like `{% tailwindcss raw=True %}`, the output are same as:
+
+```html
+/*! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com*/*,:after,:before{border:0 solid #e5e7eb;box-sizing:border-box}...
+```
+
+If you generated tailwindcss file, the output are same as:
+
+```html
+<link rel="stylesheet" type="text/css" href="...">
+```

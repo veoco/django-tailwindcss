@@ -63,6 +63,8 @@ INSTALLED_APPS = [
 
 TAILWINDCSS_CLI_FILE = BASE_DIR / 'tailwindcss-linux-x64'
 TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
+# 用于文件模式
+TAILWINDCSS_OUTPUT_FILE = 'style.css'
 ```
 
 ### 5. 在你的基础模板中添加 tailwindcss 标签
@@ -78,6 +80,16 @@ TAILWINDCSS_CONFIG_FILE = BASE_DIR / 'tailwind.config.js'
   ...
 </html>
 ```
+
+### 6. (可选) 生成 tailwindcss 文件
+
+使用 `maketailwindcss` 命令在 `Path(settings.STATIC_ROOT) / settings.TAILWINDCSS_OUTPUT_FILE` 生成 tailwindcss 文件。
+
+```
+python manage.py maketailwindcss
+```
+
+`{% tailwindcss %}` 的输出将变为使用文件。
 
 ## 缓存
 
@@ -103,3 +115,15 @@ python manage.py refreshtailwindcss
 ```
 
 所以你通常只需要添加一次这个标签。
+
+如果你添加了 `raw` 参数，如 `{% tailwindcss raw=True %}`。输出将如：
+
+```html
+/*! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com*/*,:after,:before{border:0 solid #e5e7eb;box-sizing:border-box}...
+```
+
+如果你生成了 tailwindcss 文件，输出将如：
+
+```html
+<link rel="stylesheet" type="text/css" href="...">
+```
